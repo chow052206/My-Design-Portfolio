@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Portfolio | UI/UX & Digital Art</title>
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --text-color: #ffffff;
+            --accent-color: #ff4d4d; /* A subtle red for that horror vibe */
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+        p.subtitle { font-size: 1.2rem; color: #888; }
+
+        /* Filter Navigation */
+        nav {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        nav button {
+            background: none;
+            border: 1px solid #333;
+            color: #888;
+            padding: 0.5rem 1.5rem;
+            margin: 0.2rem;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav button:hover, nav button.active {
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Portfolio Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid #222;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #444;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 250px;
+            background: #252525; /* Placeholder color */
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem;
+            border-top: 1px solid #222;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Creative Designer</h1>
+        <p class="subtitle">Specializing in UI/UX Research and Dark Digital Illustration.</p>
+    </header>
+
+    <nav>
+        <button class="active">All Work</button>
+        <button>UI/UX</button>
+        <button>Digital Art</button>
+        <button>Systems</button>
+    </nav>
+
+    <section class="grid">
+        <div class="card">
+            <div class="card-img" style="background-image: url('your-bookxcess-image.jpg'); background-size: cover;"></div>
+            <div class="card-content">
+                <span class="card-tag">UI/UX Case Study</span>
+                <h3 class="card-title">BookXcess Redesign</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img" style="background-image: url('your-clown-art.jpg'); background-size: cover;"></div>
+            <div class="card-content">
+                <span class="card-tag">Illustration</span>
+                <h3 class="card-title">Dark Carnival Series</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img" style="background-image: url('your-db-design.jpg'); background-size: cover;"></div>
+            <div class="card-content">
+                <span class="card-tag">Systems Analysis</span>
+                <h3 class="card-title">Database Architecture & Logic</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 | Built with Code & Design</p>
+    </footer>
+
+</body>
+</html>
