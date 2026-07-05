@@ -8,7 +8,7 @@
         :root {
             --bg-color: #0f0f0f;
             --text-color: #ffffff;
-            --accent-color: #ff4d4d; /* A subtle red for that horror vibe */
+            --accent-color: #ff4d4d; /* Subtle red accents */
             --card-bg: #1a1a1a;
         }
 
@@ -50,6 +50,7 @@
         nav button:hover, nav button.active {
             border-color: var(--accent-color);
             color: white;
+            background-color: rgba(255, 77, 77, 0.1);
         }
 
         /* Portfolio Grid */
@@ -66,8 +67,16 @@
             background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease;
             border: 1px solid #222;
+            display: block; /* Ensures the whole card acts as a link block */
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Smooth fade-out behavior for filtering */
+        .card.hide {
+            display: none;
         }
 
         .card:hover {
@@ -78,7 +87,7 @@
         .card-img {
             width: 100%;
             height: 250px;
-            background: #252525; /* Placeholder color */
+            background: #252525;
             object-fit: cover;
         }
 
@@ -112,46 +121,83 @@
 <body>
 
     <header>
-        <h1>Creative Designer</h1>
-        <p class="subtitle">Specializing in UI/UX Research and Dark Digital Illustration.</p>
+        <h1>Flo's Portfolio</h1>
+        <p class="subtitle">Specializing in UI/UX Research and Product Design.</p>
     </header>
 
-    <nav>
-        <button class="active">All Work</button>
-        <button>UI/UX</button>
-        <button>Digital Art</button>
-        <button>Systems</button>
+    <nav id="filter-nav">
+        <button class="active" data-filter="all">All Work</button>
+        <button data-filter="ui-ux">Web Design</button>
+        <button data-filter="digital-art">Digital Art</button>
+        <button data-filter="product">Product Design</button>
+        <button data-filter="graphic-design">Graphic Design</button>
     </nav>
 
-    <section class="grid">
-        <div class="card">
-            <div class="card-img" style="background-image: url('your-bookxcess-image.jpg'); background-size: cover;"></div>
+    <section class="grid" id="portfolio-grid">
+        
+        <a href="bookxcessredesign.html" class="card" data-category="ui-ux">
+            <div class="card-img" style="background-image: url('your-bookxcess-image.jpg'); background-size: cover; background-position: center;"></div>
             <div class="card-content">
                 <span class="card-tag">UI/UX Case Study</span>
                 <h3 class="card-title">BookXcess Redesign</h3>
             </div>
-        </div>
+        </a>
 
-        <div class="card">
-            <div class="card-img" style="background-image: url('your-clown-art.jpg'); background-size: cover;"></div>
+        <a href="aadventureworld.html" class="card" data-category="ui-ux">
+            <div class="card-img" style="background-image: url('your-aadventureworld-image.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="card-content">
+                <span class="card-tag">UI/UX Case Study</span>
+                <h3 class="card-title">Adventure World Prototype Design</h3>
+            </div>
+        </a>
+
+        <a href="the-christmas.html" class="card" data-category="digital-art">
+            <div class="card-img" style="background-image: url('your-clown-art.jpg'); background-size: cover; background-position: center;"></div>
             <div class="card-content">
                 <span class="card-tag">Illustration</span>
-                <h3 class="card-title">Dark Carnival Series</h3>
+                <h3 class="card-title">The Christmas</h3>
             </div>
-        </div>
+        </a>
 
-        <div class="card">
-            <div class="card-img" style="background-image: url('your-db-design.jpg'); background-size: cover;"></div>
+        <a href="shirtdesign.html" class="card" data-category="product">
+            <div class="card-img" style="background-image: url('your-db-design.jpg'); background-size: cover; background-position: center;"></div>
             <div class="card-content">
-                <span class="card-tag">Systems Analysis</span>
-                <h3 class="card-title">Database Architecture & Logic</h3>
+                <span class="card-tag">Shirt Design</span>
+                <h3 class="card-title">JCMC Youth T-shirt</h3>
             </div>
-        </div>
+        </a>
+
     </section>
 
     <footer>
         <p>&copy; 2026 | Built with Code & Design</p>
     </footer>
+
+    <script>
+        const filterButtons = document.querySelectorAll('#filter-nav button');
+        const projectCards = document.querySelectorAll('#portfolio-grid .card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active styling from all buttons and add to the clicked one
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                // Show or hide cards based on chosen category
+                projectCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || cardCategory === filterValue) {
+                        card.classList.remove('hide');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
